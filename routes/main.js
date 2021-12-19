@@ -1,5 +1,4 @@
 const {Router} = require('express')
-const News = require(`../models/news`)
 const router = Router()
 let newsPage = window.location.search
 
