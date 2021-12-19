@@ -1,6 +1,5 @@
 const {Router} = require('express')
 const router = Router()
-let newsPage = window.location.search
 
 router.get('/', async (req, res) => {
     res.render(`index`, {
