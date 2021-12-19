@@ -1,0 +1,495 @@
+<div class="sno-page">
+    <div class="sno-cigs-s">
+        <div class="sno-cp-cigs">
+            <div class="sno-cigs-h admissionManrope">CIGS</div>
+            <div class="sno-cigs-subh admissionManrope">CIGS (Conditional Image Generation System) — система автоматической генерации изображения по заготовленным условиям. Заполните параметры, укажите дополнительные данные и скачайте сформированный файл в расширении JPG.</div>
+            <div class="sno-cigs-subh2 admissionManrope">Окно предпросмотра результата</div>
+            <div id="small-size-cigs">
+                <div id="stage-container-2" style="width: 640px; height: 360px; background: rgb(54, 54, 54);">
+                    <canvas id="cigs-canvas-plate-2" width="640" height="360"></canvas>
+                </div>
+            </div>
+            <div class="sno-cigs-subh2 admissionManrope">1. Вставьте ссылку на фоновое изображение. Рекомендуемые параметры: 1920x1080 пикселей и более, соотношение сторон 16:9<br>Внимание! Для безопасной загрузки используйте сервис imgur. Пример: https://i.imgur.com/1s1oHv2.jpg</a></div>
+            <input class="cigs-input" type="text" id="inputCIGS-1" oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Ссылка на изображение"/>
+            <form action="https://imgur.com">
+                <button id="sno-b1" type="submit">ПЕРЕЙТИ НА IMGUR</button>
+            </form>
+            <div class="sno-cigs-subh2 admissionManrope">2. Опишите тип мероприятия, например: "Заседание СНК"</div>
+            <input class="cigs-input" type="text" title="Тип мероприятия" id="inputCIGS-2" oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Тип мероприятия"/>
+            <div class="sno-cigs-subh2 admissionManrope">3. Укажите наименование подразделения, например "Кафедра нормальной анатомии"</div>
+            <input class="cigs-input" type="text" title="Кафедра/подразделение" id="inputCIGS-3"  oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Кафедра/подразделение"/>
+            <div class="sno-cigs-subh2 admissionManrope">4. Настройте центральный текст (название/тема мероприятия) </div>
+            <div class="sno-cigs-subh3 admissionManrope">Структура текста</div>
+            <select name="list1" class="cigs-input" id="inputCIGS-select-1" onchange="CIGS_Drawing(1920,1080, 'no')">
+            <option>Выберите из списка</option>
+            <option>1 строка</option>
+            <option>2 строки</option>
+            <option>3 строки</option>
+            </select>
+            <div id="lineSelector">
+                <input class="cigs-input" disabled="disabled" value="Строка 1" type="text" title="Строка 1" id="inputCIGS-41"  oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Строка 1"/>
+                <input class="cigs-input" disabled="disabled" value="Строка 2" type="text" title="Строка 2" id="inputCIGS-42"  oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Строка 2"/>
+                <input class="cigs-input" disabled="disabled" value="Строка 3" type="text" title="Строка 3" id="inputCIGS-43"  oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Строка 3"/>
+            </div>
+            <div class="sno-cigs-subh3 admissionManrope">Размер текста </div>
+            <input type="range" id="inputCIGS-range" oninput="CIGS_Drawing(1920,1080, 'no')" min="0" max="30" step="0.1" value="50">
+            <div class="sno-cigs-subh2 admissionManrope">5. Укажите время мероприятия (например, "24.05 в 16:00")</div>
+            <input class="cigs-input" type="text" title="Например, 24.05 в 16:00" id="inputCIGS-4"  oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Например, 24.05 в 16:00"/>
+            <div class="sno-cigs-subh2 admissionManrope">6. Укажите ссылку на изображение-аватар (сервис imgur).<br>Рекомендуем использовать изображения с соотношением сторон 1:1</div>
+            <input class="cigs-input" type="text" title="Ссылка на изображение" id="inputCIGS-5"  oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Ссылка на изображение"/>
+            <div class="sno-cigs-subh2 admissionManrope">7. Укажите ФИО (ФИ) должностного лица (старосты, куратора)</div>
+            <input class="cigs-input" type="text" title="ФИО" id="inputCIGS-6"  oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="ФИО (ФИ)"/>
+            <div class="sno-cigs-subh2 admissionManrope">8. Укажите должность (например, "Староста СНК")</div>
+            <input class="cigs-input" type="text" title="Должность" id="inputCIGS-7"  oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Должность"/>
+            <div class="sno-cigs-subh2 admissionManrope">9. Укажите контактную информацию должностного лица (например, номер телефона, ссылка на VK)</div>
+            <input class="cigs-input" type="text" title="Контактная информация" id="inputCIGS-8"  oninput="CIGS_Drawing(1920,1080, 'no')" placeholder="Контактная информация"/>
+
+            <button id="sno-b1" onclick="CIGS_Drawing(1920,1080, 'yes')" id="download-jpg" type="submit">СОХРАНИТЬ JPG</button>
+            <image id="theimage"></image>
+            <form action="/">
+                <button id="sno-b1" type="submit">ВЕРНУТЬСЯ</button>
+            </form>
+            <div id="CIGS-plate" class="sno-cigs-canvas">             
+                <div id="stage-container" style="width: 1920px; height: 1080px; overflow: auto; background: rgb(54, 54, 54);">
+                    <canvas id="cigs-canvas-plate" width="1920" height="1080"></canvas>
+                </div>
+                <script src="https://cdn.anychart.com/js/latest/graphics.min.js"></script>
+                <script src="https://superal.github.io/canvas2image/canvas2image.js"></script>
+                <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-exports.min.js"></script>
+                <script>
+                    //var inputCIGS_1 = document.getElementById('inputCIGS-1').value;
+                    //var inputCIGS_2 = document.getElementById('inputCIGS-2').value;
+                    //var inputCIGS_3 = document.getElementById('inputCIGS-3').value;
+                    //Функция создания слоя
+                    
+                    async function CIGS_Small(DataX, DataY, dow) {
+                        let canvas = document.getElementById('cigs-canvas-plate-2');
+
+                        let context = canvas.getContext('2d');
+                        context.clearRect(0, 0, canvas.width, canvas.height);
+                        let xText = DataX, yText = DataY;
+                        let ToX = xText / 3
+
+                        let imageObj1 = new Image();
+                        imageObj1.src = `${document.getElementById('inputCIGS-1').value}`
+                        imageObj1.crossOrigin="anonymous"
+                        //imageObj1.crossOrigin = 'Anonymous'
+                        imageObj1.onload = function() {
+                            context.drawImage(imageObj1, ToX , 0, xText, yText);
+                            //Рендер первой картинки
+                            startRender_1()
+                        };
+                        function startRender_1() {
+                            var imageObj2 = new Image();
+                            imageObj2.src = "https://i.imgur.com/5N5cP7C.png"
+                            imageObj2.crossOrigin="anonymous"
+                            //imageObj2.crossOrigin = 'Anonymous'
+                            imageObj2.onload = function() {
+                                context.drawImage(imageObj2, 0, 0, xText, yText);
+                                RenderText_1()
+                                RenderText_2()
+                                RenderText_3()
+                                RenderImage_1()
+                                RenderText_4()
+                                RenderText_5()
+                                RenderText_6()
+                                
+                                
+                            };
+                        }
+                        function RenderText_1() {
+                            context.font = `bold ${yText*0.041666}px Roboto`;
+                            context.fillStyle = "#212121";
+                            context.fillText(`${document.getElementById('inputCIGS-2').value}`, (xText*0.1875), (yText*0.14));
+                        }
+                        function RenderText_2() {
+                            context.font = `${yText*0.041666}px Roboto`;
+                            context.fillStyle = "#212121";
+                            context.fillText(`${document.getElementById('inputCIGS-3').value}`, (xText*0.1875), (yText*0.2));
+                        }
+                        function RenderText_3() {
+                            let selector = document.getElementById('inputCIGS-select-1').value;
+                            if(selector === "Выберите из списка"){
+                            } else 
+                            if(selector === "1 строка"){
+                                //Рисование 1 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value/3}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-41').value}`, (xText*0.0895), (yText*0.3805));
+                                //Рисование времени
+                                context.font = `${yText*0.08333}px Montserrat`;
+                                context.fillStyle = "#212121";
+                                context.textBaseline = "middle";
+                                context.fillText(`${document.getElementById('inputCIGS-4').value}`, (xText*0.0895), (yText*0.525));
+                            } else 
+                            if(selector === "2 строки"){
+                                //Рисование 1 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value/3}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-41').value}`, (xText*0.0895), (yText*0.3583));
+                                //Рисование 2 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value/3}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-42').value}`, (xText*0.0895), (yText*0.4583));
+                                //Рисование времени
+                                context.font = `${yText*0.08333}px Montserrat`;
+                                context.fillStyle = "#212121";
+                                context.textBaseline = "middle";
+                                context.fillText(`${document.getElementById('inputCIGS-4').value}`, (xText*0.0895), (yText*0.5888));
+                            } else 
+                            if(selector === "3 строки"){
+                                //Рисование 1 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value/3}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-41').value}`, (xText*0.0895), (yText*0.3111));
+                                //Рисование 2 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value/3}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-42').value}`, (xText*0.0895), (yText*0.3888));
+                                //Рисование 3 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value/3}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-43').value}`, (xText*0.0895), (yText*0.4722));
+                                //Рисование времени
+                                context.font = `${yText*0.08333}px Montserrat`;
+                                context.fillStyle = "#212121";
+                                context.textBaseline = "middle";
+                                context.fillText(`${document.getElementById('inputCIGS-4').value}`, (xText*0.0895), (yText*0.6138));
+                            }
+                            
+                        }
+                        function RenderText_4(){
+                            context.font = `${yText*0.04444}px Montserrat`;
+                            context.fillStyle = "#212121";
+                            context.fillText(`${document.getElementById('inputCIGS-6').value}`, (xText*0.2046), (yText*0.7916));
+                        }
+                        function RenderText_5(){
+                            context.font = `${yText*0.02777}px Roboto`;
+                            context.fillStyle = "#212121";
+                            context.fillText(`${document.getElementById('inputCIGS-7').value}`, (xText*0.2046), (yText*0.835));
+                        }
+                        function RenderText_6(){
+                            //360 ширина, 10px / 3,6 = 2.777 => 0.02777
+                            context.font = `${yText*0.02777}px Roboto`;
+                            context.fillStyle = "#2658ca";
+                            context.fillText(`${document.getElementById('inputCIGS-8').value}`, (xText*0.2046), (yText*0.8833));
+                        }
+                        function RenderImage_1(){
+                            let img5 = new Image();
+                            img5.src = `${document.getElementById('inputCIGS-5').value}`;
+                            img5.crossOrigin="anonymous"
+                            //img5.crossOrigin = 'Anonymous'
+                            
+                            img5.onload = () => {
+                                context.save();
+                                context.beginPath();
+                                context.arc(xText*0.1367, yText*0.8255, yText*0.0777, 0, Math.PI*2, true);
+                                context.closePath();
+                                context.clip();
+                                context.drawImage(img5, xText*0.090, yText*0.7420, xText*0.09062, xText*0.09062);
+                                context.beginPath();
+                                context.arc(xText*0.1367, yText*0.8255, yText*0.0777, 0, Math.PI*2, true);
+                                context.clip();
+                                context.closePath();
+                                context.restore();
+                            };
+                        }
+                    }
+                    async function CIGS_Drawing(DataX, DataY, dow) {
+                        let canvas = document.getElementById('cigs-canvas-plate');
+
+                        let context = canvas.getContext('2d');
+                        context.clearRect(0, 0, canvas.width, canvas.height);
+                        let xText = DataX, yText = DataY;
+                        let ToX = xText / 3
+
+                        let imageObj1 = new Image();
+                        imageObj1.src = `${document.getElementById('inputCIGS-1').value}`
+                        imageObj1.crossOrigin="anonymous"
+                        //imageObj1.crossOrigin = 'Anonymous'
+                        imageObj1.onload = function() {
+                            context.drawImage(imageObj1, ToX , 0, xText, yText);
+                            //Рендер первой картинки
+                            startRender_1()
+                        };
+                        function startRender_1() {
+                            var imageObj2 = new Image();
+                            imageObj2.src = "https://i.imgur.com/5N5cP7C.png"
+                            imageObj2.crossOrigin="anonymous"
+                            //imageObj2.crossOrigin = 'Anonymous'
+                            imageObj2.onload = function() {
+                                context.drawImage(imageObj2, 0, 0, xText, yText);
+                                RenderText_1()
+                                RenderText_2()
+                                RenderText_3()
+                                RenderImage_1()
+                                RenderText_4()
+                                RenderText_5()
+                                RenderText_6()
+                                
+                                
+                            };
+                        }
+                        function RenderText_1() {
+                            context.font = `bold ${yText*0.041666}px Roboto`;
+                            context.fillStyle = "#212121";
+                            context.fillText(`${document.getElementById('inputCIGS-2').value}`, (xText*0.1875), (yText*0.14));
+                        }
+                        function RenderText_2() {
+                            context.font = `${yText*0.041666}px Roboto`;
+                            context.fillStyle = "#212121";
+                            context.fillText(`${document.getElementById('inputCIGS-3').value}`, (xText*0.1875), (yText*0.2));
+                        }
+                        function RenderText_3() {
+                            let selector = document.getElementById('inputCIGS-select-1').value;
+                            if(selector === "Выберите из списка"){
+                            } else 
+                            if(selector === "1 строка"){
+                                //Рисование 1 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-41').value}`, (xText*0.0895), (yText*0.3805));
+                                //Рисование времени
+                                context.font = `${yText*0.08333}px Montserrat`;
+                                context.fillStyle = "#212121";
+                                context.textBaseline = "middle";
+                                context.fillText(`${document.getElementById('inputCIGS-4').value}`, (xText*0.0895), (yText*0.525));
+                            } else 
+                            if(selector === "2 строки"){
+                                //Рисование 1 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-41').value}`, (xText*0.0895), (yText*0.3583));
+                                //Рисование 2 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-42').value}`, (xText*0.0895), (yText*0.4583));
+                                //Рисование времени
+                                context.font = `${yText*0.08333}px Montserrat`;
+                                context.fillStyle = "#212121";
+                                context.textBaseline = "middle";
+                                context.fillText(`${document.getElementById('inputCIGS-4').value}`, (xText*0.0895), (yText*0.5888));
+                            } else 
+                            if(selector === "3 строки"){
+                                //Рисование 1 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-41').value}`, (xText*0.0895), (yText*0.3111));
+                                //Рисование 2 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-42').value}`, (xText*0.0895), (yText*0.3888));
+                                //Рисование 3 текста
+                                context.font = `bold ${document.getElementById('inputCIGS-range').value}vh Montserrat`;
+                                var firstNameGradient = context.createLinearGradient(xText*0.07,yText*0.1,xText*0.5,yText*0.3) //no idea what values I should use
+                                firstNameGradient.addColorStop(0, '#3f989b')
+                                firstNameGradient.addColorStop(1, '#4e6180')
+                                context.fillStyle = firstNameGradient
+                                context.textBaseline = "middle";
+                                context.shadowBlur = 25;
+                                context.shadowOffsetX = 0;
+                                context.shadowOffsetY = 0;
+                                context.shadowColor = "#ffffff";
+                                context.fillText(`${document.getElementById('inputCIGS-43').value}`, (xText*0.0895), (yText*0.4722));
+                                //Рисование времени
+                                context.font = `${yText*0.08333}px Montserrat`;
+                                context.fillStyle = "#212121";
+                                context.textBaseline = "middle";
+                                context.fillText(`${document.getElementById('inputCIGS-4').value}`, (xText*0.0895), (yText*0.6138));
+                            }
+                            
+                        }
+                        function RenderText_4(){
+                            context.font = `${yText*0.04444}px Montserrat`;
+                            context.fillStyle = "#212121";
+                            context.fillText(`${document.getElementById('inputCIGS-6').value}`, (xText*0.2046), (yText*0.7916));
+                        }
+                        function RenderText_5(){
+                            context.font = `${yText*0.02777}px Roboto`;
+                            context.fillStyle = "#212121";
+                            context.fillText(`${document.getElementById('inputCIGS-7').value}`, (xText*0.2046), (yText*0.835));
+                        }
+                        function RenderText_6(){
+                            //360 ширина, 10px / 3,6 = 2.777 => 0.02777
+                            context.font = `${yText*0.02777}px Roboto`;
+                            context.fillStyle = "#2658ca";
+                            context.fillText(`${document.getElementById('inputCIGS-8').value}`, (xText*0.2046), (yText*0.8833));
+                        }
+                        function RenderImage_1(){
+                            let img5 = new Image();
+                            img5.src = `${document.getElementById('inputCIGS-5').value}`;
+                            img5.crossOrigin="anonymous"
+                            //img5.crossOrigin = 'Anonymous'
+                            
+                            img5.onload = () => {
+                                context.save();
+                                context.beginPath();
+                                context.arc(xText*0.1367, yText*0.8255, yText*0.0777, 0, Math.PI*2, true);
+                                context.closePath();
+                                context.clip();
+                                context.drawImage(img5, xText*0.090, yText*0.7420, xText*0.09062, xText*0.09062);
+                                context.beginPath();
+                                context.arc(xText*0.1367, yText*0.8255, yText*0.0777, 0, Math.PI*2, true);
+                                context.clip();
+                                context.closePath();
+                                context.restore();
+                            };
+                        }
+                        function SelectCIGS(){
+                            let selector = document.getElementById('inputCIGS-select-1').value;
+                            if(selector === "Выберите из списка"){
+                                let str1 = document.getElementById('inputCIGS-41')
+                                str1.setAttribute('disabled', 'disabled');
+                                let str2 = document.getElementById('inputCIGS-42')
+                                str2.setAttribute('disabled', 'disabled');
+                                let str3 = document.getElementById('inputCIGS-43')
+                                str3.setAttribute('disabled', 'disabled');
+                            } else 
+                            if(selector === "1 строка"){
+                                let str1 = document.getElementById('inputCIGS-41')
+                                str1.removeAttribute("disabled");
+                                let str2 = document.getElementById('inputCIGS-42')
+                                str2.setAttribute('disabled', 'disabled');
+                                let str3 = document.getElementById('inputCIGS-43')
+                                str3.setAttribute('disabled', 'disabled');
+                            } else
+                            if(selector === "2 строки"){
+                                let str1 = document.getElementById('inputCIGS-41')
+                                str1.removeAttribute("disabled");
+                                let str2 = document.getElementById('inputCIGS-42')
+                                str2.removeAttribute("disabled");
+                                let str3 = document.getElementById('inputCIGS-43')
+                                str3.setAttribute('disabled', 'disabled');
+                            } else
+                            if(selector === "3 строки"){
+                                let str1 = document.getElementById('inputCIGS-41')
+                                str1.removeAttribute("disabled");
+                                let str2 = document.getElementById('inputCIGS-42')
+                                str2.removeAttribute("disabled");
+                                let str3 = document.getElementById('inputCIGS-43')
+                                str3.removeAttribute("disabled");
+                            }
+                        }
+                        SelectCIGS()
+                        if(dow === "yes"){
+                                    setTimeout(()=>{
+                                        console.log(canvas)
+                                        const link = document.createElement('a');
+                                        link.download = 'DownloadCIGS.jpg';
+                                        link.href = canvas.toDataURL("image/jpeg");
+                                        let dataURI = canvas.toDataURL("image/jpeg");
+                                        console.log(dataURI)
+                                        link.click();
+                                        link.delete;
+                                        
+                                        //canvas.width = 640;              // actual size given with integer values
+                                        //canvas.height = 360;
+                                        //document.getElementById('stage-container').style.width = "640"
+                                        //document.getElementById('stage-container').style.height = "360"
+
+                                    },1500)
+                                    //canvas.width = 1920;              // actual size given with integer values
+                                    //canvas.height = 1080;
+                                    
+                                    //canvas.width = 640;              // actual size given with integer values
+                                    //canvas.height = 360;
+                                }
+                        //canvas.width = 1920;              // actual size given with integer values
+                        //canvas.height = 1080;
+                        CIGS_Small(640,360, 'no')
+                        
+                    }
+                    
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
