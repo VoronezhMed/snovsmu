@@ -2,7 +2,6 @@ const express = require(`express`);
 const mongoose = require(`mongoose`);
 const exp_hbs = require('express-handlebars')
 const mainRoutes = require('./routes/main')
-const NewsModel = require('./models/news')
 const PORT = 3000;
 const app = express();
 const hbs = exp_hbs.create({
