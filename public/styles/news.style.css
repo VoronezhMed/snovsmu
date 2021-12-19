@@ -1,0 +1,57 @@
+#body-3 {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background: #FFFFFF;
+    overflow-x: hidden;
+    right: -0;
+    margin-top: 0px;
+    margin-left: 0px;
+    scroll-behavior: smooth;
+}
+#body-3::-webkit-scrollbar {
+    width: 5px;
+    background-color: rgb(255, 255, 255);
+}
+#body-3::-webkit-scrollbar-thumb {
+    background-color: #111111;
+    height: 100px;
+}
+#but {
+    background: black;
+    top: 100px;
+    width: 100px;
+    height: 100px;
+}
+.newsblock {
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  width: 100%;
+  height: 900px;
+  background-color: rgb(172, 172, 172);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.newstitle {
+    margin-top: 100px;
+    margin-left: 20px;
+    color: #111111;
+}
+.newsauthor {
+    margin-top: 200px;
+    margin-left: 20px;
+    color: #111111;
+}
+.newscontent {
+    margin-top: 300px;
+    margin-left: 20px;
+    color: #111111;
+}
