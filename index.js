@@ -2,7 +2,7 @@ const express = require(`express`);
 const mongoose = require(`mongoose`);
 const exp_hbs = require('express-handlebars')
 const mainRoutes = require('./routes/main')
-const PORT = 3000;
+const PORT = process.env.PORT || 80;
 const app = express();
 const hbs = exp_hbs.create({
     defaultLayout: "main",
